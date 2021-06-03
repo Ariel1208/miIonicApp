@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+import { GetServiceService } from '../get-service.service';
 import {Router} from '@angular/router'
 
-import { GetServiceService } from '../get-service.service';
+import {  MenuController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -11,12 +14,20 @@ import { GetServiceService } from '../get-service.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router : Router, private GetService:GetServiceService) { }
+  constructor(
+    private GetService:GetServiceService,
+    public loadingController: LoadingController,
+    private menuCtrl: MenuController,
+    private router : Router,
+    ) { }
 
   ngOnInit() {
-  //  this.getUsuarios();
-  }
   
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
 
   login(user,pass){
     var data = {
@@ -24,22 +35,30 @@ export class LoginPage implements OnInit {
       "pass": pass.value
     }
     
-    this.GetService.LoginPost(data).then(data =>{
-      if(data.hasOwnProperty('id_usuario')){
-        console.log("Usuario existente");
-      }else{
-        console.log("Usuario Inexistente");
-      };
-     
-    });
-        
+    this.GetService.LoginPost(data).then((res)=>{
+     this.presentLoading(res['nombre']).then(()=>{
+        this.router.navigate(['/inicio']);
+     })
+    }).catch(err =>{
+      console.log(err);
+    })
+  }
+
+  mostrarDatosUsuario(){
+    console.log(JSON.parse(window.localStorage.getItem('datosUsuario')));
   }
 
 
-  getUsuarios(){
-    this.GetService.getUsers().then(data =>{
-      console.log(data);
-    })
+  async presentLoading(nom:string) {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Bienvenido '+nom,
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
 
 }

@@ -1,0 +1,126 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons>
+            <ion-buttons slot="start">
+                <ion-menu-button class="bordered" fill="solid" autoHide="false">
+                    <ion-icon name="apps"></ion-icon>
+                </ion-menu-button>
+            </ion-buttons>
+        </ion-buttons>
+
+        <ion-buttons slot="end">
+            <ion-button class="bordered" fill="solid" color="light">
+                <ion-icon name="notifications"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-item lines="none">
+
+        <ion-avatar slot="start">
+            <img src="../../assets/img-app/icon_1024.jpeg">
+        </ion-avatar>
+        <ion-label>
+            <h3>¡Comercializadora Tianguiztli</h3>
+            <h3> te desea un buen dia!</h3>
+        </ion-label>
+
+    </ion-item>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div class="slides ion-margin-bottom">
+        <ion-slides [options]="slidesOptions">
+            <ion-slide *ngFor="let platillo of platillos">
+                <ion-card>
+                    <ion-card-header>
+                        <div class="main">
+                            <img src="../../assets/img-app/dieta.png">
+                        </div>
+                        <img class="files" src="">
+                    </ion-card-header>
+                    <ion-card-content class="ion-text-left">
+                        <ion-card-title class="ion-margin-bottom">{{platillo['nombre_platillo']}}</ion-card-title>
+                        <ion-card-subtitle class="ion-text-right" *ngIf="platillo['tipo'] == 1">Desayuno</ion-card-subtitle>
+                        <ion-card-subtitle class="ion-text-right" *ngIf="platillo['tipo'] == 2">Comida</ion-card-subtitle>
+                        <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+    <div class="container">
+
+        <h2>Opciones</h2>
+
+        <ion-item lines="none">
+            <ion-grid>
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="3">
+                        <ion-button color="light" fill="clear">
+                            <ion-icon slot="icon-only" name="cash"></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col size="7">
+                        <ion-label>
+                            <h4>Contestar encuestas</h4>
+                        </ion-label>
+                    </ion-col>
+                    <ion-col size="2">
+                        <ion-button color="light" fill="clear">
+                            <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+
+        <ion-item lines="none">
+            <ion-grid>
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="3">
+                        <ion-button color="light" fill="clear">
+                            <ion-icon slot="icon-only" name="reader"></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col size="7">
+                        <ion-label>
+                            <h4>Consultar pagos</h4>
+                        </ion-label>
+                    </ion-col>
+                    <ion-col size="2">
+                        <ion-button color="light" fill="clear">
+                            <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-grid>
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="3">
+                        <ion-button color="light" fill="clear">
+                            <ion-icon slot="icon-only" name="reader"></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col size="7">
+                        <ion-label>
+                            <h4>Consultar pagos</h4>
+                        </ion-label>
+                    </ion-col>
+                    <ion-col size="2">
+                        <ion-button color="light" fill="clear">
+                            <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </div>
+
+</ion-content>

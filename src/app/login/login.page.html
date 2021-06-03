@@ -7,45 +7,36 @@
 <ion-content>
 
     <ion-grid>
+
         <ion-row>
-            <ion-col>
-                <div></div>
-            </ion-col>
-            <ion-col col-6>
-                <div>
-                    <ion-list>
-                        <ion-item>
-                            <ion-thumbnail slot="start">
-                                <ion-img src="assets/img-app/icon-1024.png"></ion-img>
-                            </ion-thumbnail>
-                        </ion-item>
-                    </ion-list>
-                </div>
-            </ion-col>
-            <ion-col>
-                <div></div>
+            <ion-col col-12>
+                <ion-list>
+                    <img src="./assets/img-app/icon_1024.png">
+                </ion-list>
             </ion-col>
         </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <form action=" ">
+                    <ion-item>
+                        <ion-label position="floating ">Correo empresarial</ion-label>
+                        <ion-input type="text " #email></ion-input>
+                    </ion-item>
 
+                    <ion-item>
+                        <ion-label position="floating ">Contraseña</ion-label>
+                        <ion-input type="text " #password></ion-input>
+                    </ion-item>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-button type="submit" (click)=" login(email,password) " expand="block ">
+                                Iniciar sesión
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </form>
+            </ion-col>
+        </ion-row>
     </ion-grid>
-    <form action="">
-        <ion-item>
-            <ion-label position="floating">Correo empresarial</ion-label>
-            <ion-input type="text" #email></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label position="floating">Contraseña</ion-label>
-            <ion-input type="text" #password></ion-input>
-        </ion-item>
-
-        <ion-row>
-            <ion-col>
-                <ion-button type="submit" (click)=" login(email,password)" expand="block">
-                    Iniciar sesión
-                </ion-button>
-            </ion-col>
-        </ion-row>
-    </form>
-
 </ion-content>
